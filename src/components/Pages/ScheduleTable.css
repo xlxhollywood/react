@@ -1,0 +1,62 @@
+/* 테이블 행의 높이 설정 */
+tr {
+  height: 90px; /* 원하는 높이 설정 */
+}
+
+/* 테이블 셀 여백 조정 */
+td, th {
+  font-size: 15px;
+  padding: 15px 10px;
+}
+
+th {
+  text-align: center; /* 가로 가운데 정렬 */
+  vertical-align: middle; /* 세로 가운데 정렬 (헤더 높이가 클 경우 유용) */
+}
+
+td {
+  text-align: center; /* 가로 정렬 */
+  vertical-align: middle; /* 세로 정렬 */
+}
+
+/* 버튼 스타일링 */
+.btn {
+  height: 2em;
+  font-size: 1rem; 
+  white-space: nowrap;   /* 텍스트 줄바꿈 방지 */
+  overflow: hidden;      /* 텍스트가 넘치지 않게 설정 */
+  text-overflow: ellipsis; /* 텍스트가 넘칠 경우 말줄임(...) 처리 */
+  padding: 5px 10px;    /* 버튼 내부 여백 */
+  width: auto;           /* 버튼의 너비를 자동으로 설정 */
+  max-width: 100%;       /* 버튼이 부모 요소 크기를 넘지 않도록 설정 */
+  display: inline-block; /* 버튼이 내용에 맞게 크기 조정 */
+}
+
+/* 추가 버튼 스타일링 */
+.red {
+  background-color: rgb(255, 60, 60);
+  border-color: rgb(255, 60, 60);
+}
+
+.gray {
+  
+  background-color: gray;
+  border-color: gray;
+}
+
+/* 첫 번째 컬럼의 폰트 굵기 */
+td:first-child {
+  font-weight: bold; /* 첫 번째 컬럼에만 bold 적용 */
+}
+
+/* 클릭 가능한 행에 커서 변경 */
+.clickable {
+  cursor: pointer;
+}
+
+.spaced-text {
+  padding: 0 7px; /* 각 글자 사이에 5px의 간격 추가 */
+}
+
+
+

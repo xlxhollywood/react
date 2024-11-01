@@ -1,0 +1,33 @@
+/* 필요한 CSS를 여기에 추가합니다. */
+header {
+  margin-top: -12px;
+  padding-top: 0px;
+  height: 50px;
+  padding-bottom: 100px
+}
+
+#chose {
+  background-color: #f8c146 !important;
+  border: #f8c146;
+  color: white !important;
+  border-radius: 7px;
+  padding: 10px 15px;
+}
+
+.dropdown {
+  margin-right: -10px;
+}
+
+.nav-pills .nav-link {
+  color: black;
+}
+
+#my-icon {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

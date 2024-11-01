@@ -1,0 +1,51 @@
+.date-selector {
+  display: flex;
+  justify-content: space-between; /* 요소들 사이에 균등한 간격 배치 */
+  align-items: center;
+  gap: 10px; /* 요소들 사이 간격 */
+  padding: 20px;
+  width: 100%; /* 전체 너비에 맞추기 */
+  max-width: 1200px; /* 화면 너비에 맞는 최대 값 설정 */
+  margin: 0 auto; /* 가운데 정렬 */
+  padding-top: 50px;
+}
+
+.date-selector .arrow {
+  font-size: 1.5rem;
+  color: #B0B0B0;
+  cursor: pointer;
+}
+
+.date-selector .date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+}
+
+.date-selector .selected {
+  background-color: #f8c146; /* 아이콘 색상 */
+  color: white;
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-selector .weekend {
+  color: red;
+}
+
+.date-selector .saturday {
+  color: blue;
+}
+
+.date-selector .weekday {
+  color: black;
+}
+
+.date-selector .day-text {
+  font-size: 0.8rem;
+}

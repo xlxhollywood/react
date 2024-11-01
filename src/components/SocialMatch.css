@@ -1,0 +1,67 @@
+/* 카로셀 관련 스타일 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+/* src/components/SocialMatch.css 또는 전체 적용을 위한 styles.css에 추가 */
+
+.carousel-item {
+  height: 25vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  background-size: cover;
+}
+
+.carousel-caption h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.carousel-caption p {
+  font-size: 1.1rem;
+}
+
+#carousel_container {
+  
+  margin-bottom: 50px;
+}
+
+#myCarousel {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+#myCarousel .carousel-item img {
+  height: 100%;
+  border-radius: 10px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+}
+
+.carousel-indicators button {
+  background-color: #f8c146; /* 버튼 색상 */
+}
+
+.crew {
+  margin-top: -30px;
+  margin-bottom: 30px;
+  padding: 0px 0px 0px 0px ;
+  display: flex;  
+  font-weight: bold;
+  font-size: 1.1em;
+  
+}
+
+.inner-crew {
+  margin: 0px 12px 0px 5px;
+}
+
+
+#invite {
+  color: rgba(0, 0, 0, 0.173);
+}
+
+.nav{
+  margin-top : -10px;
+}

@@ -1,0 +1,77 @@
+/* RegionFilter.css */
+.flex {
+  display: flex;
+}
+
+/* 사이드바 전체 컨테이너 스타일 */
+.region-filter-container {
+  margin-top: 90px;
+  width: 250px;
+  height: 60vh;
+  padding: 20px;
+  border-radius: 8px;
+  border: solid #f5f4f4;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+/* 사이드바 타이틀 스타일 */
+.region-filter-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #170d0d;
+}
+
+/* 사이드바 리스트 스타일 */
+.region-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 리스트 항목 스타일 */
+.region-list li {
+  padding: 12px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* 하위 구 목록 스타일 */
+.sub-region-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.sub-region-list li {
+  padding: 8px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+/* 하위 구 목록의 hover 스타일 */
+.sub-region-list li:hover {
+  background-color: #e3f2fd;
+  color: #333;
+}
+
+/* 하위 구 목록에는 active 클래스 적용 안 되도록 설정 */
+.sub-region-list li.active {
+  
+  color: #666;
+}
+
+

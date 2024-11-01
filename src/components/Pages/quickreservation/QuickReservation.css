@@ -1,0 +1,165 @@
+/* QuickReservation.css */
+
+/* 전체 컨테이너 스타일 */
+.quick-reservation-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.notice {
+  padding : 0px 0px 0px 20px;
+  margin: 0 0 25px 0;
+  height: 40px;
+  border-radius: 2px;
+  background-color: #fff3b8;
+  display: flex; 
+  align-items: center;
+}
+/* 경로 표시 스타일 */
+.quick-reservation-path {
+  margin-bottom: 20px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* 메인 제목 스타일 */
+.quick-reservation-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* 섹션 스타일 */
+.quick-reservation-section {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 섹션 헤더 스타일 */
+.quick-reservation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* 부제목 스타일 */
+.quick-reservation-subtitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* 카테고리 리스트 스타일 */
+.quick-reservation-category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.grid-container-rank {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 3열로 나눔 */
+  gap: 8px; /* 항목들 사이 간격 */
+  justify-items: center;
+  align-items: center; /* 수직 정렬 (중앙) */
+}
+
+.grid-item-rank {
+  width: auto;
+  height : 250px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+/* ExampleComponent.css */
+.grid-container {
+  margin-top: 10px;
+  margin-right: -10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 3열 */
+  grid-template-rows: repeat(4, 1fr); /* 3행 */
+  gap: 30px; /* 각 항목 사이의 간격 */
+  padding: 20px;
+}
+
+.grid-item {
+  width: 220px;
+  height: 300px;
+  border-radius: 15px;
+  padding: 0;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+/* .quick-reservation-section {
+  background-color: red;
+} */
+
+.rank-cafe {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  color: #333;
+}
+
+.rank-title {
+  margin: -5px 0px 0px 0px;
+  padding: 0;
+}
+
+.non-flex {
+  margin-left: -15px;
+  padding-left: 0;
+  margin-right: 20px; 
+  margin-top: 20px;
+}
+
+img {
+  border-radius: 15px;
+}
+
+.review-address {
+  color: #666;
+  font-size: 12.5px;
+  margin: 5px 0px 0px 0px;
+  padding: 0; 
+}
+
+.review-title {
+  font-weight: 500;
+  font-size: 18px;
+  margin: 0px 0px 6px 0px;
+  padding: 0;
+}
+
+.review-star{
+  font-size: 16px;
+}
+
+.review-count {
+  font-size: 13px;
+  color: #666;
+}
+
+.review-price {
+  padding: 0;
+  margin-top: -3px;
+  font-weight: 500;
+  font-size: 18px;
+}

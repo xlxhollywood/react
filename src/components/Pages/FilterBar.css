@@ -1,0 +1,62 @@
+/* 필터 관련 CSS 코드를 여기에 저장 */
+.filter-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 0cqb 0px 15px;
+}
+
+.filter-btn {
+  border: 1px solid #d1d1d1;
+  border-radius: 20px;
+  padding: 7px 15px;
+  background-color: white;
+  color: #6c757d;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-btn i {
+  font-size: 0.5rem;
+  color: #f8c146;
+}
+
+.filter-btn:hover {
+  background-color: #f1f1f1;
+}
+
+#textform {
+  font-size: 15px; /* 폰트 크기 */
+  width: 18em;
+  border: 1px solid transparent;
+  outline: none;
+  background-color: inherit;
+}
+
+#textform:hover,
+#textform:focus,
+#textform:active {
+  border: 1px solid transparent;
+  background-color: inherit;
+}
+
+.search {
+  border-color: #f7f7f7;
+  background-color: #f7f7f7;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  height: 30px;
+}
+
+
+#location {
+  border: 1px solid #f8c146;
+  color: #f8c146;
+}

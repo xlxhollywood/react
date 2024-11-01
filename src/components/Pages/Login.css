@@ -1,0 +1,131 @@
+/* Login Page Container */
+.auth-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  
+}
+
+.auth-login__container {
+  width: 700px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.auth-login__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-login__form {
+  width: 100%;
+}
+
+.auth-login__input {
+  margin-bottom: 16px;
+}
+
+.auth-login__input--title {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.auth-login__input input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.auth-login__input input:focus {
+  border-color: #4285f4;
+  background-color: #fff;
+  outline: none;
+}
+
+.auth-login__save-id {
+  font-size: 14px;
+  color: #555;
+}
+
+.auth-login__button--login {
+  width: 100%;
+  padding: 12px;
+  background-color: #4285f4;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 16px 0;
+}
+
+.auth-login__button--login:hover {
+  background-color: #357ae8;
+}
+
+.auth-login__button--extra {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #777;
+}
+
+.auth-login__button--extra a {
+  color: #4285f4;
+  text-decoration: none;
+}
+
+.auth-login__button--extra a:hover {
+  text-decoration: underline;
+}
+
+.auth-login__divider {
+  width: 100%;
+  height: 1px;
+  background-color: #e6e6e6;
+  margin: 16px 0;
+}
+
+.auth-login__button--kakao {
+  width: 100%;
+  padding: 12px;
+  background-color: #fee500;
+  border: none;
+  border-radius: 4px;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-login__button--kakao img {
+  margin-right: 8px;
+}
+
+.auth-login__button--kakao:hover {
+  background-color: #fdd835;
+}
+
+.auth-login__save-id {
+  justify-content: center;
+  text-align: center;
+  padding-left: 5px;
+}
+
+#saveID {
+  justify-content: center;
+  text-align: center
+
+}

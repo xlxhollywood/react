@@ -1,0 +1,15 @@
+.container {
+  max-width: 1230px !important
+}
+
+/* global.css */
+.background-div {
+  top: 180px;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 400px;
+  background-color: #f2f5f7;
+  border-bottom: solid 1px #e1e4e6;
+}
+
