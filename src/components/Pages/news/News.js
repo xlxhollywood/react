@@ -1,23 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './News.css'; // 스타일 파일 import
 import news1 from '../../../assets/images/news1.png';
 import { MdModeEdit } from "react-icons/md"; // 수정 아이콘
 import { FaRegTrashAlt } from "react-icons/fa"; // 삭제 아이콘
 
 const News = () => {
-  // 뉴스 목록과 입력 상태 관리
-  const [newsList, setNewsList] = useState([
-    {
-      id: 1,
-      title: "비트포비아 101 새로운 테마 11월 오픈 ...",
-      content: "비트포비아 101 홍대점에서 새로운 테마 '삐릿-뽀'가 곧 오픈된다. 이번 테마는 공포 요소가 전혀 없고, 아기자기하고 귀여운 분위기를 특징으로 한다. 남녀노소 누구나 편하게 즐길 수 있는 테마로, 특히 친구나 연인, 가족들과 함께 색다른 경험을 원하는 사람들에게 제격이다. 삐릿-뽀는 다채로운 퍼즐과 독창적인 스토리로 구성되어 있으며, 플레이어들은 귀여운 캐릭터들과 함께 모험을 펼치게 된다. 이용 가격은 30,000원 대로, 합리적인 가격에 특별한 추억을 만들 수 있다.",
-    }
-  ]);
+  const [newsList, setNewsList] = useState([]); // 뉴스 목록을 저장할 상태
+  const [newNews, setNewNews] = useState({ title: '', content: '', imageUrl: '' });
+  const [imagePreview, setImagePreview] = useState(null); // 이미지 미리 보기 상태
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentId, setCurrentId] = useState(null);
 
-  const [newNews, setNewNews] = useState({ title: '', content: '' });
-  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
-  const [isEditing, setIsEditing] = useState(false); // 수정 상태 관리
-  const [currentId, setCurrentId] = useState(null); // 수정할 뉴스 ID
+  // 뉴스 목록 가져오기
+  useEffect(() => {
+    fetchNews();
+  }, []);
+
+  const fetchNews = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/notice');
+      console.log('응답 데이터:', response.data); // 응답 데이터를 콘솔에 출력해 확인
+      setNewsList(response.data.notices || []); // notices 속성에서 뉴스 목록 가져오기
+    } catch (error) {
+      console.error('뉴스 목록 가져오기 실패:', error);
+      setNewsList([]); // 오류 시 빈 배열 설정
+    }
+  };
 
   // 입력 변경 처리
   const handleChange = (e) => {
@@ -25,51 +35,82 @@ const News = () => {
     setNewNews({ ...newNews, [name]: value });
   };
 
-  // 새로운 뉴스 추가
-  const handleAdd = () => {
+  // 이미지 파일 선택 처리
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImagePreview(reader.result); // 이미지 미리 보기 설정
+        setNewNews({ ...newNews, imageUrl: reader.result }); // 이미지 URL 설정
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // 뉴스 추가
+  const handleAdd = async () => {
     if (newNews.title && newNews.content) {
-      setNewsList([...newsList, { ...newNews, id: Date.now() }]);
-      setNewNews({ title: '', content: '' }); // 입력 초기화
-      setIsModalOpen(false); // 뉴스 추가 후 모달 닫기
+      try {
+        await axios.post('http://localhost:8080/api/notice', newNews);
+        fetchNews(); // 새로고침하여 업데이트된 뉴스 목록 가져오기
+        setNewNews({ title: '', content: '', imageUrl: '' });
+        setImagePreview(null); // 이미지 미리 보기 초기화
+        setIsModalOpen(false);
+      } catch (error) {
+        console.error('뉴스 추가 실패:', error);
+      }
     }
   };
 
   // 뉴스 수정 준비
   const handleEdit = (id) => {
     const newsToEdit = newsList.find((news) => news.id === id);
-    setNewNews({ title: newsToEdit.title, content: newsToEdit.content });
+    if (!newsToEdit) return;
+    setNewNews({ title: newsToEdit.title, content: newsToEdit.content, imageUrl: newsToEdit.imageUrl || '' });
+    setImagePreview(newsToEdit.imageUrl || null); // 이미지 미리 보기 설정
     setCurrentId(id);
     setIsEditing(true);
-    setIsModalOpen(true); // 수정 시 모달 열기
+    setIsModalOpen(true);
   };
 
   // 뉴스 수정 완료
-  const handleUpdate = () => {
-    setNewsList(
-      newsList.map((news) =>
-        news.id === currentId ? { ...news, title: newNews.title, content: newNews.content } : news
-      )
-    );
-    setNewNews({ title: '', content: '' }); // 입력 초기화
-    setIsModalOpen(false); // 수정 후 모달 닫기
-    setIsEditing(false);
-    setCurrentId(null);
+  const handleUpdate = async () => {
+    if (!currentId || !newNews.title || !newNews.content) return;
+    try {
+      await axios.patch(`http://localhost:8080/api/${currentId}`, newNews);
+      fetchNews();
+      setNewNews({ title: '', content: '', imageUrl: '' });
+      setImagePreview(null); // 이미지 미리 보기 초기화
+      setIsModalOpen(false);
+      setIsEditing(false);
+      setCurrentId(null);
+    } catch (error) {
+      console.error('뉴스 수정 실패:', error);
+    }
   };
 
   // 뉴스 삭제
-  const handleDelete = (id) => {
-    setNewsList(newsList.filter((news) => news.id !== id));
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8080/api/${id}`);
+      fetchNews();
+    } catch (error) {
+      console.error('뉴스 삭제 실패:', error);
+    }
   };
 
   // 모달 열기 및 닫기 핸들러
   const openModal = () => {
-    setNewNews({ title: '', content: '' }); // 입력 초기화
+    setNewNews({ title: '', content: '', imageUrl: '' });
+    setImagePreview(null); // 이미지 미리 보기 초기화
     setIsEditing(false);
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    setNewNews({ title: '', content: '' });
+    setNewNews({ title: '', content: '', imageUrl: '' });
+    setImagePreview(null); // 이미지 미리 보기 초기화
     setIsModalOpen(false);
     setIsEditing(false);
   };
@@ -77,32 +118,34 @@ const News = () => {
   return (
     <div id="news-container">
       {/* 뉴스 목록 출력 */}
-      {newsList.map((news) => (
-        <div key={news.id} className="news-container-block">
-          <div className="news-actions">
-            {/* 수정 아이콘 */}
-            <MdModeEdit
-              onClick={() => handleEdit(news.id)}
-              style={{ cursor: 'pointer', fontSize: '12px'}}
-            />
-            {/* 삭제 아이콘 */}
-            <FaRegTrashAlt
-              onClick={() => handleDelete(news.id)}
-              style={{ cursor: 'pointer', fontSize: '12px' }}
-            />
-          </div>
-          <div className="news-block">
-            <div className="news-content">
-              <h2>{news.title}</h2>
-              <p>{news.content}</p>
+      {newsList.length > 0 ? (
+        newsList.map((news) => (
+          <div key={news.id} className="news-container-block">
+            <div className="news-actions">
+              <MdModeEdit
+                onClick={() => handleEdit(news.id)}
+                style={{ cursor: 'pointer', fontSize: '12px' }}
+              />
+              <FaRegTrashAlt
+                onClick={() => handleDelete(news.id)}
+                style={{ cursor: 'pointer', fontSize: '12px' }}
+              />
             </div>
-            <div className="news-img-block">
-              <img className="news-img" src={news1} alt="news-img" />
+            <div className="news-block">
+              <div className="news-content">
+                <h2>{news.title}</h2>
+                <p>{news.content}</p>
+              </div>
+              <div className="news-img-block">
+                <img className="news-img" src={news.imageUrl || news1} alt="news-img" />
+              </div>
             </div>
+            <hr />
           </div>
-          <hr />
-        </div>
-      ))}
+        ))
+      ) : (
+        <p>뉴스가 없습니다.</p>
+      )}
 
       {/* 글쓰기 버튼 */}
       <div className='content-right'>
@@ -126,6 +169,12 @@ const News = () => {
               value={newNews.content}
               onChange={handleChange}
             />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
+            {imagePreview && <img src={imagePreview} alt="미리 보기" className="image-preview" />}
             {isEditing ? (
               <button onClick={handleUpdate}>수정 완료</button>
             ) : (
